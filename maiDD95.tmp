@@ -1,0 +1,59 @@
+[gd_scene load_steps=7 format=3 uid="uid://cjr1e55l4a23m"]
+
+[ext_resource type="Texture2D" uid="uid://dxbsq571q1x7" path="res://Background.png" id="1_qxxsa"]
+[ext_resource type="Script" path="res://main.gd" id="1_v2tfv"]
+[ext_resource type="PackedScene" uid="uid://cyjl5mw5aphle" path="res://main_character.tscn" id="2_mrmxl"]
+[ext_resource type="PackedScene" uid="uid://bh3u6evlv6gx1" path="res://Paper.tscn" id="3_2axw7"]
+[ext_resource type="Texture2D" uid="uid://bwwotm2jn6tpe" path="res://open green.PNG" id="5_o2q3e"]
+[ext_resource type="Script" path="res://Button.gd" id="6_350ni"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_v2tfv")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_qxxsa")
+stretch_mode = 1
+
+[node name="Blue Bin(Main Character)" parent="." instance=ExtResource("2_mrmxl")]
+position = Vector2(324, 815)
+
+[node name="Paper" parent="." instance=ExtResource("3_2axw7")]
+position = Vector2(291, 47)
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Label" type="Label" parent="CanvasLayer"]
+texture_filter = 1
+anchors_preset = -1
+anchor_left = 0.424
+anchor_top = 0.326
+anchor_right = 0.424
+anchor_bottom = 0.326
+offset_left = -0.224014
+offset_top = 0.175995
+offset_right = 116.776
+offset_bottom = 55.176
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 40
+text = "Score:"
+
+[node name="Button" type="Button" parent="."]
+offset_top = -1.0
+offset_right = 108.0
+offset_bottom = 107.0
+theme_override_colors/icon_hover_color = Color(0.447059, 0, 0, 1)
+action_mode = 0
+icon = ExtResource("5_o2q3e")
+flat = true
+script = ExtResource("6_350ni")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

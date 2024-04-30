@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://c135guennt341"]
+
+[ext_resource type="Texture2D" uid="uid://bk2lpkopb43k8" path="res://pixil-frame-0 (2).png" id="1_f4y4c"]
+[ext_resource type="Script" path="res://peel.gd" id="1_ove1c"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_chp1v"]
+size = Vector2(114, 59)
+
+[node name="Peel" type="RigidBody2D"]
+collision_layer = 2
+script = ExtResource("1_ove1c")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(66.5, 66.5)
+scale = Vector2(2.33, 2.33)
+texture = ExtResource("1_f4y4c")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(77, 59.5)
+shape = SubResource("RectangleShape2D_chp1v")

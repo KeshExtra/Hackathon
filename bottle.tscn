@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://vxb4tml6pb8t"]
+
+[ext_resource type="Script" path="res://bottle.gd" id="1_qahnu"]
+[ext_resource type="Texture2D" uid="uid://xqp40lqrbkrh" path="res://pixil-frame-0.png" id="1_w0gqa"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3wx7x"]
+size = Vector2(52.125, 98)
+
+[node name="Bottle" type="RigidBody2D"]
+texture_filter = 1
+collision_layer = 2
+script = ExtResource("1_qahnu")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(2, 4.54747e-13)
+scale = Vector2(4.23, 4.23)
+texture = ExtResource("1_w0gqa")
+offset = Vector2(6.61938, 5.67376)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(5, 0)
+shape = SubResource("RectangleShape2D_3wx7x")

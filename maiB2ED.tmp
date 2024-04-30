@@ -1,0 +1,65 @@
+[gd_scene load_steps=9 format=3 uid="uid://cjr1e55l4a23m"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_v2tfv"]
+[ext_resource type="PackedScene" uid="uid://cyjl5mw5aphle" path="res://main_character.tscn" id="2_mrmxl"]
+[ext_resource type="Texture2D" uid="uid://dq6gwu2hwvirr" path="res://back.png" id="2_pi2x5"]
+[ext_resource type="PackedScene" uid="uid://bh3u6evlv6gx1" path="res://Paper.tscn" id="3_2axw7"]
+[ext_resource type="Texture2D" uid="uid://bwwotm2jn6tpe" path="res://open green.PNG" id="5_o2q3e"]
+[ext_resource type="Script" path="res://Button.gd" id="6_350ni"]
+[ext_resource type="AudioStream" uid="uid://bchpxhcrifcx3" path="res://can.wav" id="7_bmnwa"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_m2abp"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_v2tfv")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+texture_filter = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_pi2x5")
+stretch_mode = 1
+
+[node name="Blue Bin(Main Character)" parent="." instance=ExtResource("2_mrmxl")]
+position = Vector2(276, 878)
+
+[node name="Paper" parent="." instance=ExtResource("3_2axw7")]
+position = Vector2(291, 47)
+
+[node name="Timer" type="Timer" parent="."]
+autostart = true
+
+[node name="Button" type="Button" parent="."]
+offset_top = -1.0
+offset_right = 142.0
+offset_bottom = 144.0
+theme_override_constants/outline_size = 4
+theme_override_styles/focus = SubResource("StyleBoxEmpty_m2abp")
+action_mode = 0
+icon = ExtResource("5_o2q3e")
+flat = true
+expand_icon = true
+script = ExtResource("6_350ni")
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_bmnwa")
+volume_db = -17.333
+
+[node name="Label" type="Label" parent="."]
+texture_filter = 1
+anchors_preset = -1
+anchor_top = 0.359
+anchor_bottom = 0.359
+offset_left = 5.0
+offset_top = -157.616
+offset_right = 586.0
+offset_bottom = -88.616
+theme_override_font_sizes/font_size = 40
+text = "Score:"
+horizontal_alignment = 1
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="pressed" from="Button" to="Blue Bin(Main Character)" method="_on_button_pressed"]

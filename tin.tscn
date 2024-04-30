@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://clkv3lybglri4"]
+
+[ext_resource type="Texture2D" uid="uid://b8wfwqmwvygge" path="res://can.PNG" id="1_1dm3s"]
+[ext_resource type="Script" path="res://tin.gd" id="1_stp21"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_wjwsu"]
+radius = 32.0
+height = 88.0
+
+[node name="Tin" type="RigidBody2D"]
+position = Vector2(291, 47)
+collision_layer = 2
+collision_mask = 0
+script = ExtResource("1_stp21")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+position = Vector2(0, 4)
+scale = Vector2(4.32, 4.32)
+texture = ExtResource("1_1dm3s")
+offset = Vector2(4.62963, 8.7963)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-4, 0)
+shape = SubResource("CapsuleShape2D_wjwsu")

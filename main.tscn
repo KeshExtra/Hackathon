@@ -1,0 +1,91 @@
+[gd_scene load_steps=12 format=3 uid="uid://cjr1e55l4a23m"]
+
+[ext_resource type="Script" path="res://main.gd" id="1_v2tfv"]
+[ext_resource type="PackedScene" uid="uid://cyjl5mw5aphle" path="res://main_character.tscn" id="2_mrmxl"]
+[ext_resource type="PackedScene" uid="uid://bh3u6evlv6gx1" path="res://Paper.tscn" id="3_2axw7"]
+[ext_resource type="Theme" uid="uid://ddmqoccmv80gi" path="res://checkbox.tres" id="5_2ffn1"]
+[ext_resource type="Texture2D" uid="uid://bwwotm2jn6tpe" path="res://open_green.PNG" id="5_o2q3e"]
+[ext_resource type="AudioStream" uid="uid://dii2qjsfcpt8d" path="res://Untitled video (3).wav" id="6_1i0bd"]
+[ext_resource type="Script" path="res://Button.gd" id="6_350ni"]
+[ext_resource type="AudioStream" uid="uid://bchpxhcrifcx3" path="res://can.wav" id="7_bmnwa"]
+[ext_resource type="Script" path="res://Label.gd" id="8_2jwtd"]
+[ext_resource type="PackedScene" uid="uid://c135guennt341" path="res://peel.tscn" id="9_grgcn"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_74ek8"]
+
+[node name="Main" type="Node"]
+script = ExtResource("1_v2tfv")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 578.0
+offset_bottom = 1028.0
+color = Color(0.627451, 1, 0.694118, 1)
+
+[node name="Blue Bin(Main Character)" parent="." instance=ExtResource("2_mrmxl")]
+position = Vector2(324, 815)
+
+[node name="Paper" parent="." instance=ExtResource("3_2axw7")]
+position = Vector2(291, 47)
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+autostart = true
+
+[node name="points" type="RichTextLabel" parent="."]
+offset_left = 24.0
+offset_top = 936.0
+offset_right = 354.0
+offset_bottom = 1006.0
+theme_override_font_sizes/normal_font_size = 50
+text = "Points: 0"
+
+[node name="mistake1" type="CheckBox" parent="."]
+offset_right = 116.0
+offset_bottom = 118.0
+theme = ExtResource("5_2ffn1")
+
+[node name="mistake2" type="CheckBox" parent="."]
+offset_left = 1.0
+offset_top = 116.0
+offset_right = 117.0
+offset_bottom = 234.0
+theme = ExtResource("5_2ffn1")
+
+[node name="mistake3" type="CheckBox" parent="."]
+offset_left = 4.0
+offset_top = 236.0
+offset_right = 120.0
+offset_bottom = 354.0
+theme = ExtResource("5_2ffn1")
+
+[node name="Peel" parent="." instance=ExtResource("9_grgcn")]
+
+[node name="Ball" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("6_1i0bd")
+volume_db = -4.0
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_bmnwa")
+volume_db = -10.0
+
+[node name="Label" type="Label" parent="."]
+offset_left = 7.0
+offset_top = 178.0
+offset_right = 581.0
+offset_bottom = 258.0
+theme_override_font_sizes/font_size = 40
+text = "Score"
+horizontal_alignment = 1
+script = ExtResource("8_2jwtd")
+
+[node name="Button" type="Button" parent="."]
+offset_left = 29.0
+offset_top = -13.0
+offset_right = 160.0
+offset_bottom = 118.0
+theme_override_styles/focus = SubResource("StyleBoxEmpty_74ek8")
+icon = ExtResource("5_o2q3e")
+flat = true
+script = ExtResource("6_350ni")
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
