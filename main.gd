@@ -2,7 +2,7 @@ extends Node
 var count = 0
 var array = [-1,-1,-1,-1,-1,-1,1]
 var gs = 0
-var ts = 1
+var ts = 2.5
 var arr = [load("res://Paper.tscn"),load("res://tin.tscn"),load("res://bottle.tscn"),load("res://peel.tscn")]
 var y : int= 400
 var div = y/2
@@ -29,6 +29,7 @@ func _process(delta):
 func addLost():
 	lost += 1
 	for i in range(lost):
+		if i >= len(lostCounters): break
 		lostCounters[i].set_pressed(true)
 
 # Called when the node enters the scene tree for the first time.
@@ -52,14 +53,14 @@ func _on_timer_timeout():
 	var newObject = object.instantiate()
 	var x = randi()	% 450 + 50
 	newObject.position.x=x
-	newObject.position.y=-20
+	newObject.position.y=100
 	newObject.gravity_scale=gs
-	newObject.linear_velocity = Vector2(0,y+rand)
+	newObject.linear_velocity = Vector2(0,y)
 	add_child(newObject) # Replace with function body.
 	 # Replace with function body.
-	$Timer.process_callback= ts
+	$Timer.wait_time= ts
 	
 	if $"Blue Bin(Main Character)".points % 10 == 0:
-		$"Blue Bin(Main Character)".SPEED += 150
+		$"Blue Bin(Main Character)".SPEED += 1
 		ts-=0.2
 		y+=200

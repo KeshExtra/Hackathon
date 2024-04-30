@@ -8,6 +8,7 @@ size = Vector2(114, 59)
 
 [node name="Peel" type="RigidBody2D"]
 collision_layer = 2
+gravity_scale = 0.5
 script = ExtResource("1_ove1c")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

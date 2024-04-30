@@ -9,6 +9,7 @@ height = 58.0
 
 [node name="Paper" type="RigidBody2D"]
 collision_layer = 2
+gravity_scale = 0.5
 script = ExtResource("1_whgbw")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://cn1ch8wjuk2pe"]
 
 [ext_resource type="Script" path="res://instructions.gd" id="1_i13hh"]
-[ext_resource type="Theme" uid="uid://bvpooftnhbaia" path="res://button.tres" id="2_17h6p"]
+[ext_resource type="Theme" uid="uid://b1sxkuhn8216h" path="res://button.tres" id="2_17h6p"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_iqfjf"]
 bg_color = Color(1, 1, 1, 1)
@@ -58,6 +58,6 @@ theme_override_constants/shadow_offset_y = 0
 theme_override_constants/outline_size = 10
 theme_override_font_sizes/normal_font_size = 30
 bbcode_enabled = true
-text = "[left]The goal of this game is to help you understand the difference between what should be recycled and what should be thrown away![/left]
+text = "[left]The goal of this game is to help you understand the difference between what should be recycled in what kind of trash can![/left]
 
-[left]In the game, you have to capture the falling trash using the correct bin. You can switch between the garbage can & the recycling bin using the space bar or the button on the screen! How many points can [u]YOU[/u] get?[/left]"
+[left]In the game, you have to capture the falling trash using the correct bin. You can switch between the green & blue recycling bins using the space bar! How many points can [u]YOU[/u] get?[/left]"

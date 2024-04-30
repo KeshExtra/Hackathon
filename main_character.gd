@@ -10,10 +10,12 @@ var gravity = 0
 static var points = 0
 var pointsNode = null
 var sprite2D
+var parent
 # ProjectSettings.get_setting("physics/2d/default_gravity")
 func _ready():
 	pointsNode = get_parent().get_node("./points")
 	sprite2D = get_node("./Sprite2D")
+	parent = get_parent()
 	
 func _physics_process(delta):
 	velocity.y = 0
@@ -39,25 +41,43 @@ func _physics_process(delta):
 		if c.get_collider() is PaperCollect:
 			c.get_collider().queue_free()
 			
-			points+=1
+			if spriteloc == 0:
+				points += 1
+			else:
+				parent.addLost()
+				
 			$"../Ball".play()
 			pointsNode.set_text("Points: " + str(points))
+			
 		if c.get_collider() is AlCan:
 			c.get_collider().queue_free()
 			get_last_slide_collision()
-			points+=1
+			
+			if spriteloc == 1:
+				points += 1
+			else:
+				parent.addLost()
+				
 			$"../Sound".play()
 			pointsNode.set_text("Points: " + str(points))
 		if c.get_collider() is Plastic:
 			c.get_collider().queue_free()
 			get_last_slide_collision()
-			points+=1
+			
+			if spriteloc == 1:
+				points += 1
+			else:
+				parent.addLost()
+				
 			$"../Sound".play()
 			pointsNode.set_text("Points: " + str(points))
 		if c.get_collider() is Organic:
 			c.get_collider().queue_free()
 			get_last_slide_collision()
-			points+=1
+			if spriteloc == 0:
+				points += 1
+			else:
+				parent.addLost()
 			$"../Sound".play()
 			pointsNode.set_text("Points: " + str(points))
 	
@@ -73,7 +93,6 @@ func setPoints(newP):
 
 
 func _on_button_pressed():
-	$Sprite2D.texture = sprites[spriteloc]
 	if spriteloc == 0:
 		spriteloc+=1
 	else:
